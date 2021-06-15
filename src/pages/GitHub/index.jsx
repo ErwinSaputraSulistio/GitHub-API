@@ -11,6 +11,7 @@ import { useParams } from "react-router"
 export default function GitHub() {
    const { id } = useParams()
    const [gitData, setGitData] = useState(null)
+   const [repoCounter, setCounter] = useState(5)
    // GIT REPOS
    const [gitRepos, setGitRepos] = useState([])
    useEffect(() => {
@@ -32,15 +33,22 @@ export default function GitHub() {
          )
       })
    }, [])
+   // ARROW FUNCTIONS
+   const arrowFunc = (func) => {
+      if(func === "+") {
+         setCounter(((repoCounter/5) + 1) * 5)
+      }
+      else if(func === "-") {
+         setCounter(((repoCounter/5) - 1) * 5)
+      }
+   }
    return(
       <div className={css.githubPage}>
          {gitData === null ?
          null
          :
          gitData === "Invalid" ?
-         <div>
-            GitHub tidak di temukan!
-         </div>
+         <div className="displayRow" style={{alignItems: "center", fontSize: "32px", height: "100vh", justifyContent: "center"}}>Tidak dapat menemukan user yang di cari!</div>
          :
          <div className={css.githubUserBorder}>
             <a className={"displayColumn " + css.githubUserInfo} href={gitData.html_url} target="_blank">
@@ -60,15 +68,30 @@ export default function GitHub() {
                <span className={css.githubClickMe}>[ Visit GitHub ]</span>
             </a>
             <div className={"displayColumn " + css.githubUserRepo}>
-               <span className={css.githubUserRepoText}>Repositories</span> 
+               <div className="displayRow" style={{alignItems: "center", borderBottom: "0.1vw solid #9F9F9F", justifyContent: "center"}}>
+                  <span className={css.githubUserRepoText}>Repositories</span> 
+                  <div className={"displayRow " + css.paginationBorder}>
+                     {repoCounter/5 <= 1 ?
+                     <span style={{opacity: "0.11"}}>{"<"}</span>
+                     :
+                     <span className="hoverThis" onClick={ () => { arrowFunc("-") } }>{"<"}</span>
+                     }
+                     <span>{repoCounter / 5}</span>
+                     {repoCounter >= gitRepos.length ?
+                     <span style={{opacity: "0.11"}}>{">"}</span>
+                     :
+                     <span className="hoverThis" onClick={ () => { arrowFunc("+") } }>{">"}</span>
+                     }
+                  </div>
+               </div>
                <div>
                   {
                   gitRepos.length === 0 ?
                   <div style={{fontStyle: "italic", margin: "2vw", textAlign: "center"}}>It seems that this user hasn't create any repositories yet</div>
                   :
-                  gitRepos.slice(0,5).map((item) => {
+                  gitRepos.slice(repoCounter -5, repoCounter).map((item) => {
                      return(
-                        <Repo commits={item.commits_url} name={item.name} url={item.html_url}/>
+                        <Repo commits={item.commits_url} counter={repoCounter} name={item.name} url={item.html_url}/>
                      )
                   })}
                </div>

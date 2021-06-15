@@ -2,8 +2,6 @@
    color: black;
    transition-duration: 0.5s;
 }
-
-/* DESKTOP */
 .repoBtn {
    border-top: 0.1vw solid grey;
    padding: 1vw 2vw;
@@ -17,5 +15,9 @@
    margin-top: 0.77vw;
    padding-top: 0.77vw;
 }
-
-/* MOBILE */
+.commitText {
+   width: 45%;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}

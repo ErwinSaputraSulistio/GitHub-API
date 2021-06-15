@@ -1,0 +1,11 @@
+/* DESKTOP */
+@media(min-width: 768px) {
+   .searchInput, .searchBtn { padding: 0.5vw; }
+   .searchInput { width: 11vw; }
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+   .searchInput, .searchBtn { padding: 3vw; }
+   .searchInput { width: 50vw; }
+}

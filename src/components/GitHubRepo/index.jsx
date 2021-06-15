@@ -5,9 +5,10 @@ import axios from "axios"
 import Top from "../../assets/Top.png"
 import Bottom from "../../assets/Bottom.png"
 
-export default function GitHubRepo({ commits, name, url }) {
+export default function GitHubRepo({ commits, counter, name, url }) {
    const [repoCommits, setCommits] = useState([])
    const [showCommits, switchHideShow] = useState(false)
+   const [viewMore, setViewCount] = useState(5)
    useEffect(() => {
       axios.get(commits.slice(0,-6))
       .then((res) => {
@@ -17,7 +18,17 @@ export default function GitHubRepo({ commits, name, url }) {
          console.log(err.response)
       })
    }, [])
-   console.log(repoCommits)
+   useEffect(() => {
+      switchHideShow(false)
+      setViewCount(5)
+      axios.get(commits.slice(0,-6))
+      .then((res) => {
+         setCommits(res.data)
+      })
+      .catch((err) => {
+         console.log(err.response)
+      })
+   }, [counter])
    return(
       <div className={css.repoBtn}>
          <div className="displayRow" style={{alignItems: "center", justifyContent: "space-between"}}>
@@ -26,15 +37,23 @@ export default function GitHubRepo({ commits, name, url }) {
          </div>
          <div className={css.commitsList} style={showCommits === false ? {display: "none"} : null}>
             <b>Commits :</b>
+            <div style={{margin: "1.5vw 0"}}>
             {
-               repoCommits.map((item) => {
+               repoCommits.slice(0, viewMore).map((item) => {
                   return(
                      <div className="displayRow" style={{justifyContent: "space-between", width: "100%"}}>
-                        <span>{item.commit.author.name}</span>
-                        <span>{item.commit.message}</span>
+                        <span className={css.commitText}>{item.commit.author.name}</span>
+                        <span className={css.commitText}>{item.commit.message}</span>
                      </div>
                   )
                })
+            }
+            </div>
+            {
+               repoCommits.length > 5 && viewMore < repoCommits.length ?
+               <div style={{fontWeight: "bold", textAlign: "center"}}><span className="hoverThis" onClick={ () => { setViewCount(viewMore + 5) } }>View more</span></div>
+               :
+               null
             }
          </div>
       </div>
