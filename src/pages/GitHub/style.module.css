@@ -1,31 +1,48 @@
 .githubUserInfo { 
    align-items: center; 
+   color: black;
 }
 .githubUserAvatar {
    border-radius: 50%;
 }
 .githubUserBio { 
+   color: grey;
    text-align: justify; 
 }
 .githubUserName, .githubUserRepoText {
    font-weight: bold;
    text-align: center;
 }
+.githubClickMe {
+   font-weight: bold;
+   opacity: 0;
+   transition-duration: 0.5s;
+}
+.githubUserInfo:hover .githubClickMe { margin: 1.5vw 0; opacity: 1; }
+.githubUserInfo, .githubUserRepo { transition-duration: 0.5s; }
 
 /* DESKTOP */
 @media(min-width: 768px) {
    .githubUserBorder {
+      display: flex;
+      flex-direction: row;
       justify-content: space-around;
-      margin: 5.5vw;
+      padding: 5.5vw;
    }
    .githubUserInfo, .githubUserRepo { 
-      border: 0.1vw solid #9F9F9F; 
-      border-radius: 1vw; 
+      border: 0.1vw solid #9F9F9F;  
    }
    .githubUserInfo { 
       animation: slideLeft 1.5s;
+      border-radius: 3.3vw 0 3.3vw 0;
+      height: fit-content;
       padding: 3vw 1.5vw; 
       width: 20%; 
+   }
+   .githubUserInfo:hover {
+      border-radius: 0 3.3vw 0 3.3vw;
+      box-shadow: 0.11vw 0.11vw 2.2vw #D7D7D7;
+      cursor: pointer;
    }
    .githubUserAvatar {
       height: 10vw;
@@ -36,17 +53,25 @@
       margin-top: 1.5vw;
    }
    .githubUserBio {
+      font-size: 0.88vw;
       margin: 0.5vw 0;
    }
    .githubUserRepo { 
       animation: slideRight 1.5s;
+      border-radius: 0 3.3vw 0 3.3vw;
+      height: fit-content;
       width: 60%; 
+   }
+   .githubUserRepo:hover {
+      border-radius: 3.3vw 0 3.3vw 0;
+      box-shadow: 0.11vw 0.11vw 2.2vw #D7D7D7;
    }
    .githubUserRepoText {
       border-bottom: 0.1vw solid #9F9F9F;
       font-size: 1.5vw;
       padding: 1vw 0;
    }
+   .githubClickMe { font-size: 1vw; }
    /* ANIMATIONS */
    @keyframes slideLeft{from{margin-left: -10vw; opacity: 0;} to{margin-left: 0; opacity: 1;}}
    @keyframes slideRight{from{margin-right: -10vw; opacity: 0;} to{margin-right: 0; opacity: 1;}}
@@ -54,5 +79,46 @@
 
 /* MOBILE */
 @media(max-width: 768px) {
-    
+   .githubUserBorder {
+      justify-content: space-around;
+      margin: 15vw;
+   }
+   .githubUserInfo, .githubUserRepo { 
+      border: 0.1vw solid #9F9F9F; 
+      border-radius: 1vw; 
+   }
+   .githubUserInfo { 
+      animation: slideLeft 1.5s;
+      border-radius: 10vw 0 10vw 0;
+      padding: 5vw; 
+   }
+   .githubUserInfo:hover {
+      border-radius: 0 10vw 0 10vw;
+      box-shadow: 0.3vw 0.3vw 3vw steelblue;
+      cursor: pointer;
+   }
+   .githubUserAvatar {
+      height: 33vw;
+      margin: 5.5vw 0;
+      width: 33vw; 
+   }
+   .githubUserName {
+      font-size: 5.5vw;
+   }
+   .githubUserBio {
+      font-size: 4vw;
+      margin: 5.5vw 0;
+   }
+   .githubUserRepo { 
+      animation: slideRight 1.5s;
+   }
+   .githubUserRepoText {
+      border-bottom: 0.1vw solid #9F9F9F;
+      font-size: 1.5vw;
+      padding: 1vw 0;
+   }
+   .githubClickMe { font-size: 4vw; }
+   /* ANIMATIONS */
+   @keyframes slideLeft{from{margin-left: -10vw; opacity: 0;} to{margin-left: 0; opacity: 1;}}
+   @keyframes slideRight{from{margin-right: -10vw; opacity: 0;} to{margin-right: 0; opacity: 1;}}
 }

@@ -41,3 +41,5 @@
 .displayColumn, .displayRow { display: flex; }
 .displayColumn { flex-direction: column; }
 .displayRow { flex-direction: row; }
+a { text-decoration: none; }
+.hoverThis:hover { cursor: pointer; opacity: 0.5; }

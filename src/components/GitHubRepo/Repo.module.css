@@ -1,0 +1,21 @@
+.repoText {
+   color: black;
+   transition-duration: 0.5s;
+}
+
+/* DESKTOP */
+.repoBtn {
+   border-top: 0.1vw solid grey;
+   padding: 1vw 2vw;
+}
+.repoText:hover {
+   margin-left: 1vw;
+   opacity: 0.5;
+}
+.commitsList {
+   border-top: 0.1vw solid grey;
+   margin-top: 0.77vw;
+   padding-top: 0.77vw;
+}
+
+/* MOBILE */
