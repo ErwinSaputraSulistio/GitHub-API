@@ -1,0 +1,58 @@
+.githubUserInfo { 
+   align-items: center; 
+}
+.githubUserAvatar {
+   border-radius: 50%;
+}
+.githubUserBio { 
+   text-align: justify; 
+}
+.githubUserName, .githubUserRepoText {
+   font-weight: bold;
+   text-align: center;
+}
+
+/* DESKTOP */
+@media(min-width: 768px) {
+   .githubUserBorder {
+      justify-content: space-around;
+      margin: 5.5vw;
+   }
+   .githubUserInfo, .githubUserRepo { 
+      border: 0.1vw solid #9F9F9F; 
+      border-radius: 1vw; 
+   }
+   .githubUserInfo { 
+      animation: slideLeft 1.5s;
+      padding: 3vw 1.5vw; 
+      width: 20%; 
+   }
+   .githubUserAvatar {
+      height: 10vw;
+      width: 10vw; 
+   }
+   .githubUserName {
+      font-size: 1.5vw;
+      margin-top: 1.5vw;
+   }
+   .githubUserBio {
+      margin: 0.5vw 0;
+   }
+   .githubUserRepo { 
+      animation: slideRight 1.5s;
+      width: 60%; 
+   }
+   .githubUserRepoText {
+      border-bottom: 0.1vw solid #9F9F9F;
+      font-size: 1.5vw;
+      padding: 1vw 0;
+   }
+   /* ANIMATIONS */
+   @keyframes slideLeft{from{margin-left: -10vw; opacity: 0;} to{margin-left: 0; opacity: 1;}}
+   @keyframes slideRight{from{margin-right: -10vw; opacity: 0;} to{margin-right: 0; opacity: 1;}}
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+    
+}

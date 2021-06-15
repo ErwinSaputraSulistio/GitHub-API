@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+/* GLOBAL CSS ADDITION */
+.displayColumn, .displayRow { display: flex; }
+.displayColumn { flex-direction: column; }
+.displayRow { flex-direction: row; }
